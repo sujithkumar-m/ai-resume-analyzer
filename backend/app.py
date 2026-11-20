@@ -13,6 +13,7 @@ app = Flask(__name__)
 # Enable CORS for all routes
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
+
 SAMPLE_RESUME_TEXT = """
 ALEXANDER MORGAN
 Email: alex.morgan.dev@gmail.com | Phone: (555) 349-2810 | Location: San Francisco, CA
@@ -137,7 +138,13 @@ def sample_analysis():
         })
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
-
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({
+        "message": "AI Resume Analyzer API is running",
+        "status": "success",
+        "service": "AI Resume Analyzer Backend"
+    })
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
     print(f"Starting AI Resume Analyzer Backend on port {port}...")
