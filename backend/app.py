@@ -1,4 +1,10 @@
 import os
+import sys
+from pathlib import Path
+
+# Add backend directory to sys.path to guarantee local module imports on Render/Heroku
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
