@@ -11,7 +11,7 @@ load_dotenv()
 
 app = Flask(__name__)
 # Enable CORS for all routes
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app)
 
 
 SAMPLE_RESUME_TEXT = """
